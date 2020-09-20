@@ -7,12 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.example.newsappinkotlin.R
-import com.example.newsappinkotlin.ui.model.NewsModel
-import com.example.newsappinkotlin.ui.network.NewsClient
-import kotlinx.android.synthetic.main.fragment_headlines.*
+import com.example.newsappinkotlin.model.NewsModel
+import com.example.newsappinkotlin.network.NewsClient
 
 class HeadlinesFragment : Fragment() {
     var currentPage=1

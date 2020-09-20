@@ -1,6 +1,6 @@
-package com.example.newsappinkotlin.ui.network
+package com.example.newsappinkotlin.network
 
-import com.example.newsappinkotlin.ui.model.NewsModel
+import com.example.newsappinkotlin.model.NewsModel
 import com.google.gson.annotations.SerializedName
 
 data class NewsResponse(
