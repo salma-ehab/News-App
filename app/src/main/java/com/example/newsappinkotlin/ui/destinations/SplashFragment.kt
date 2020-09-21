@@ -23,7 +23,7 @@ class SplashFragment : Fragment() {
         var runnable = Runnable {
             findNavController().navigate(R.id.action_splashFragment_to_headlinesFragment)
         }
-        handler.postDelayed(runnable,1500)
+        handler.postDelayed(runnable,2000)
 
     }
 

@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.destinations.SavedItemsFragment">
+    tools:context=".ui.destinations.ItemDetailsFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+
+
     <TextView
+        android:id="@+id/articleTitle2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Saved Items Fragment"
-        android:textSize="50sp" />
+        android:text="You have no Saved Headlines"
+        android:textSize="40sp"
+        android:textStyle="italic"
+        android:background="#e6ecec"
+        android:textColor="#000000"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="15dp" />
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

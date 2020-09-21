@@ -14,7 +14,7 @@
             android:id="@+id/action_splashFragment_to_headlinesFragment"
             app:destination="@id/headlinesFragment"
             app:popUpTo="@id/app_nav_graph"
-            app:popUpToInclusive="true">
+            app:popUpToInclusive="false">
 
         </action>
     </fragment>
