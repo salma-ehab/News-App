@@ -6,7 +6,6 @@
     tools:context=".ui.destinations.HeadlinesFragment">
 
     <!-- TODO: Update blank fragment layout -->
-sama
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_news"
         android:layout_width="match_parent"
