@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.example.newsappinkotlin.R
 import com.example.newsappinkotlin.model.NewsModel
 import com.example.newsappinkotlin.ui.destinations.HeadlinesFragment
 import kotlinx.android.synthetic.main.news_card.view.*
@@ -14,7 +15,7 @@ class HeadlinesAdapter(var News:MutableList<NewsModel>, context: HeadlinesFragme
     class Viewholder (itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun onbind (NewsStory : NewsModel){
             itemView.headlineTitle.text = NewsStory.title
-            itemView.website.text = NewsStory.url.toString()
+            itemView.website.text = NewsStory.source.name
             Glide.with(itemView)
                 .load(NewsStory.urlToImage)
                 .transform(CenterCrop())

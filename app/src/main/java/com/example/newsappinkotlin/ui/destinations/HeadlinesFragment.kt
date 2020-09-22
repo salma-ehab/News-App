@@ -9,13 +9,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.newsappinkotlin.HeadlinesAdapter
 import com.example.newsappinkotlin.R
 import com.example.newsappinkotlin.model.NewsModel
 import com.example.newsappinkotlin.network.APIServices
 import com.example.newsappinkotlin.ui.destinations.HeadlinesFragment
 
 import com.example.newsappinkotlin.network.NewsClient
+import com.example.newsappinkotlin.ui.adapter.HeadlinesAdapter
 import kotlinx.android.synthetic.main.fragment_headlines.*
 
 class HeadlinesFragment : Fragment() {
