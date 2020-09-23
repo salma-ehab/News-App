@@ -1,5 +1,6 @@
 package com.example.newsappinkotlin.network
 
+import android.util.Log
 import com.example.newsappinkotlin.model.NewsModel
 import retrofit2.Call
 import retrofit2.Callback
