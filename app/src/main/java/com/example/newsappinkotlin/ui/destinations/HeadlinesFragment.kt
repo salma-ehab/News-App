@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsappinkotlin.R
@@ -17,6 +18,7 @@ import com.example.newsappinkotlin.ui.destinations.HeadlinesFragment
 import com.example.newsappinkotlin.network.NewsClient
 import com.example.newsappinkotlin.ui.adapter.HeadlinesAdapter
 import kotlinx.android.synthetic.main.fragment_headlines.*
+import kotlinx.android.synthetic.main.news_card.*
 
 class HeadlinesFragment : Fragment() {
     var currentPage = 1
@@ -29,8 +31,20 @@ class HeadlinesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-
-        Adapter = HeadlinesAdapter(mutableListOf(), this)
+        fun onClickCard(new:NewsModel) {
+            val extras = Bundle()
+            extras.putString("title", new.title)
+            extras.putString("releaseDate", new.publishedAt)
+            extras.putString("name", new.source.name)
+            extras.putString("description", new.desciption)
+            extras.putString("image", new.urlToImage)
+            extras.putString("link", new.url)
+            findNavController().navigate(
+                R.id.action_headlinesFragment_to_itemDetailsFragment,
+                extras
+            )
+        }
+        Adapter = HeadlinesAdapter(mutableListOf()){e-> onClickCard(e)}
         llm = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
         rv_news.adapter = Adapter
