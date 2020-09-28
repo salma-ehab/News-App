@@ -11,12 +11,13 @@ import retrofit2.Response
 
 class NewsViewModel : ViewModel() {
     var mutableNewsList : MutableLiveData<ArrayList<NewsModel>> = MutableLiveData()
-    fun fetchNews(page:Int=1 )
+
+    fun fetchHeadlines(page:Int=1)
     {
-        NewsClient.service.getAllNews(pageNumber = page).enqueue(object : Callback<NewsResponse>
+        NewsClient.service.getAllHeadlines(pageNumber = page).enqueue(object : Callback<NewsResponse>
         {
             override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
- //               onError.invoke()
+              //  onError.invoke()
             }
 
             override fun onResponse(
@@ -29,9 +30,13 @@ class NewsViewModel : ViewModel() {
                     {
                         mutableNewsList.value = response?.body()!!.articles as ArrayList<NewsModel>
                     }
-
+                    else
+                    {
+                     //   onError.invoke()
+                    }
                 }
             }
         })
     }
+
 }

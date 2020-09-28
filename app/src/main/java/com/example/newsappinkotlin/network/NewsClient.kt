@@ -18,10 +18,9 @@ object NewsClient {
     }
     // to be added to the view model
 
-// to be added to the view model
-    fun fetchHeadlines(page:Int=1, onSuccess:(newsList:MutableList<NewsModel>)->Unit, onError:()->Unit)
+    fun fetchNews(page:Int=1, onSuccess:(newsList:MutableList<NewsModel>)->Unit, onError:()->Unit)
     {
-        service.getAllHeadlines(pageNumber = page).enqueue(object : Callback<NewsResponse>
+        service.getAllNews(pageNumber = page).enqueue(object : Callback<NewsResponse>
         {
             override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
                 onError.invoke()

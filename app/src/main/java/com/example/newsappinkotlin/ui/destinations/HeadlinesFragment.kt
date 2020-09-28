@@ -54,7 +54,7 @@ class HeadlinesFragment : Fragment() {
         getPopularNews()
     }
     fun getPopularNews(){
-        vm.fetchNews(currentPage)
+        vm.fetchHeadlines(currentPage)
         vm.mutableNewsList.observe(viewLifecycleOwner, object : Observer<ArrayList<NewsModel>> {
             override fun onChanged(list: ArrayList<NewsModel>?) {
                Adapter.appendMovies(list as ArrayList<NewsModel>)
