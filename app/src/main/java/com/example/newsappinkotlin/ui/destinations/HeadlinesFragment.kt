@@ -7,20 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsappinkotlin.R
 import com.example.newsappinkotlin.model.NewsModel
-import com.example.newsappinkotlin.network.APIServices
-import com.example.newsappinkotlin.ui.destinations.HeadlinesFragment
 
 import com.example.newsappinkotlin.network.NewsClient
+import com.example.newsappinkotlin.ui.ViewModel.NewsViewModel
 import com.example.newsappinkotlin.ui.adapter.HeadlinesAdapter
 import kotlinx.android.synthetic.main.fragment_headlines.*
-import kotlinx.android.synthetic.main.news_card.*
 
 class HeadlinesFragment : Fragment() {
+    lateinit var vm: NewsViewModel
     var currentPage = 1
     lateinit var Adapter: HeadlinesAdapter
     lateinit var llm: LinearLayoutManager
@@ -44,17 +45,22 @@ class HeadlinesFragment : Fragment() {
                 extras
             )
         }
+        vm = ViewModelProvider(this).get(NewsViewModel::class.java)
         Adapter = HeadlinesAdapter(mutableListOf()){e-> onClickCard(e)}
         llm = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
         rv_news.adapter = Adapter
         rv_news.layoutManager = llm
-        getNews()
+        getPopularNews()
     }
-
-    fun getNews() {
-        Log.d("AllNews", "here")
-        NewsClient.fetchHeadlines(currentPage, ::onSuccess, ::onError)
+    fun getPopularNews(){
+        vm.fetchNews(currentPage)
+        vm.mutableNewsList.observe(viewLifecycleOwner, object : Observer<ArrayList<NewsModel>> {
+            override fun onChanged(list: ArrayList<NewsModel>?) {
+               Adapter.appendMovies(list as ArrayList<NewsModel>)
+                attachOnClickListener()
+            }
+        })
     }
 
     // These functions are to be modified on adding the view model
@@ -62,8 +68,7 @@ class HeadlinesFragment : Fragment() {
         Toast.makeText(getActivity(), "Failed to get news", Toast.LENGTH_SHORT).show()
     }
 
-    fun onSuccess(list: MutableList<NewsModel>) {
-        Adapter.appendMovies(list)
+    fun attachOnClickListener() {
 
         rv_news.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -74,7 +79,7 @@ class HeadlinesFragment : Fragment() {
                 if (firstVisibleItem + visibleItemsCount >= totalItems / 2) {
                     rv_news.removeOnScrollListener(this)
                     currentPage++
-                    getNews()
+                    getPopularNews()
                 }
             }
         })
