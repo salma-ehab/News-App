@@ -8,7 +8,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.example.newsappinkotlin.R
 import com.example.newsappinkotlin.model.NewsModel
-import com.example.newsappinkotlin.ui.destinations.HeadlinesFragment
 import kotlinx.android.synthetic.main.news_card.view.*
 
 class HeadlinesAdapter(var News:MutableList<NewsModel>, var listener:(NewsModel)->Unit): RecyclerView.Adapter<HeadlinesAdapter.Viewholder>() {
@@ -40,7 +39,7 @@ class HeadlinesAdapter(var News:MutableList<NewsModel>, var listener:(NewsModel)
 
     override fun getItemCount(): Int = News!!.size
 
-    fun appendMovies(updateNews: List<NewsModel>){
+    fun appendMovies(updateNews: MutableList<NewsModel>){
         this.News!!.addAll(updateNews)
         notifyItemRangeInserted(
             this.News!!.size,
