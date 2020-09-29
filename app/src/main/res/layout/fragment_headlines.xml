@@ -6,10 +6,11 @@
     tools:context=".ui.destinations.HeadlinesFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_news"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Headlines Fragment"
-        android:textSize="50sp" />
+        android:layout_marginBottom="60dp"
+        tools:listitem="@layout/news_card" />
 
 </FrameLayout>

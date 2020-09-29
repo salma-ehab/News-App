@@ -14,7 +14,7 @@
             android:id="@+id/action_splashFragment_to_headlinesFragment"
             app:destination="@id/headlinesFragment"
             app:popUpTo="@id/app_nav_graph"
-            app:popUpToInclusive="true">
+            app:popUpToInclusive="false">
 
         </action>
     </fragment>
@@ -40,7 +40,16 @@
         android:id="@+id/itemDetailsFragment"
         android:name="com.example.newsappinkotlin.ui.destinations.ItemDetailsFragment"
         android:label="fragment_item_details"
-        tools:layout="@layout/fragment_item_details" />
+        tools:layout="@layout/fragment_item_details" >
+        <action
+            android:id="@+id/action_itemDetailsFragment_to_webFragment3"
+            app:destination="@id/webFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/webFragment3"
+        android:name="com.example.newsappinkotlin.ui.destinations.WebFragment"
+        android:label="fragment_web"
+        tools:layout="@layout/fragment_web" />
 
 
 </navigation>
