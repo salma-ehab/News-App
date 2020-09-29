@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsappinkotlin.R
+import com.example.newsappinkotlin.database.NewsDatabase
 import com.example.newsappinkotlin.model.NewsModel
 
 import com.example.newsappinkotlin.network.NewsClient
@@ -22,6 +23,7 @@ import kotlinx.android.synthetic.main.fragment_headlines.*
 
 class HeadlinesFragment : Fragment() {
     lateinit var vm: NewsViewModel
+    lateinit var dbNews: NewsDatabase
     var currentPage = 1
     lateinit var Adapter: HeadlinesAdapter
     lateinit var llm: LinearLayoutManager
@@ -45,8 +47,15 @@ class HeadlinesFragment : Fragment() {
                 extras
             )
         }
+        fun onSave(new:NewsModel)
+        {
+            dbNews.getNewsDao().insertNews(new)
+            Toast.makeText(getActivity(), "News Saved", Toast.LENGTH_SHORT).show()
+        }
+
+        dbNews=NewsDatabase.getSavedItems(requireActivity().applicationContext)
         vm = ViewModelProvider(this).get(NewsViewModel::class.java)
-        Adapter = HeadlinesAdapter(mutableListOf()){e-> onClickCard(e)}
+        Adapter = HeadlinesAdapter(mutableListOf(),{e-> onClickCard(e)},{e-> onSave(e)})
         llm = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
         rv_news.adapter = Adapter
@@ -57,7 +66,7 @@ class HeadlinesFragment : Fragment() {
         vm.fetchHeadlines(currentPage)
         vm.mutableNewsList.observe(viewLifecycleOwner, object : Observer<ArrayList<NewsModel>> {
             override fun onChanged(list: ArrayList<NewsModel>?) {
-               Adapter.appendMovies(list as ArrayList<NewsModel>)
+                Adapter.appendNews(list as ArrayList<NewsModel>)
                 attachOnClickListener()
             }
         })

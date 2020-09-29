@@ -11,7 +11,7 @@ import com.example.newsappinkotlin.model.NewsModel
 import com.example.newsappinkotlin.ui.destinations.HeadlinesFragment
 import kotlinx.android.synthetic.main.news_card.view.*
 
-class HeadlinesAdapter(var News:MutableList<NewsModel>, var listener:(NewsModel)->Unit): RecyclerView.Adapter<HeadlinesAdapter.Viewholder>() {
+class HeadlinesAdapter(var News:MutableList<NewsModel>, var listener:(NewsModel)->Unit,var savedListener:(NewsModel)->Unit): RecyclerView.Adapter<HeadlinesAdapter.Viewholder>() {
     class Viewholder (itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun onbind (NewsStory : NewsModel){
             itemView.headlineTitle.text = NewsStory.title
@@ -36,11 +36,13 @@ class HeadlinesAdapter(var News:MutableList<NewsModel>, var listener:(NewsModel)
         var Newsitem = News!![position]
         holder.onbind(Newsitem)
         holder.itemView.setOnClickListener{listener(Newsitem)}
+        holder.itemView.menuIcon.setOnClickListener{savedListener(Newsitem)}
+
     }
 
     override fun getItemCount(): Int = News!!.size
 
-    fun appendMovies(updateNews: List<NewsModel>){
+    fun appendNews(updateNews: List<NewsModel>){
         this.News!!.addAll(updateNews)
         notifyItemRangeInserted(
             this.News!!.size,

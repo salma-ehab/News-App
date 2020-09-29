@@ -11,6 +11,8 @@ import retrofit2.Response
 
 class NewsViewModel : ViewModel() {
     var mutableNewsList : MutableLiveData<ArrayList<NewsModel>> = MutableLiveData()
+    var mutablePositionList : MutableLiveData<Int> = MutableLiveData()
+
 
     fun fetchHeadlines(page:Int=1)
     {
@@ -37,6 +39,9 @@ class NewsViewModel : ViewModel() {
                 }
             }
         })
+    }
+    fun setPosition(pos : Int){
+        mutablePositionList.value = pos
     }
 
 }
