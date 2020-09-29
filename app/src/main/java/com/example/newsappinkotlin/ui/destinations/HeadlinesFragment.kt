@@ -30,6 +30,7 @@ class HeadlinesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_headlines, container, false)
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         fun onClickCard(new:NewsModel) {

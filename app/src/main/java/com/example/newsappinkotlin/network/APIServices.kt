@@ -10,6 +10,7 @@ interface APIServices {
     fun getAllNews(@Query("apiKey") apiKey:String="7b68ee98ace74ebaa81eac2d8ee911ec",@Query("page") pageNumber:Int=1
     ,@Query("q") q:String="bitcoin")
     :Call<NewsResponse>
+
     @GET("v2/top-headlines")
 
     fun getAllHeadlines(@Query("apiKey") apiKey:String="7b68ee98ace74ebaa81eac2d8ee911ec",@Query("page") pageNumber:Int=1

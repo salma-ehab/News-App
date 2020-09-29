@@ -2,6 +2,7 @@ package com.example.newsappinkotlin.model
 
 import com.google.gson.annotations.SerializedName
 
+
 data class NewsModel (
     @SerializedName("source") val source: SourceModel,
     @SerializedName("author") var author:String,

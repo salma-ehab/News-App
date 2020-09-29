@@ -1,12 +1,12 @@
 package com.example.newsappinkotlin.ui.destinations
 import android.os.Bundle
 import android.os.Handler
+import android.view.*
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.newsappinkotlin.R
+import kotlinx.android.synthetic.main.activity_main.*
 
 class SplashFragment : Fragment() {
 
@@ -23,10 +23,7 @@ class SplashFragment : Fragment() {
         var runnable = Runnable {
             findNavController().navigate(R.id.action_splashFragment_to_headlinesFragment)
         }
-        handler.postDelayed(runnable,1000)
-
+        handler.postDelayed(runnable, 1000)
     }
-
-
 
 }
