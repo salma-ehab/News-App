@@ -98,13 +98,12 @@
 
     <ImageView
         android:id="@+id/bookmark_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_bookmark_border_24"
-        app:layout_constraintTop_toBottomOf="@id/articleTitle2"
-        app:layout_constraintEnd_toEndOf="@id/share_icon"
-        android:paddingRight="60dp"
-        android:paddingTop="5dp"/>
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/ic_saved"
+        app:layout_constraintEnd_toStartOf="@id/share_icon"
+        app:layout_constraintTop_toBottomOf="@id/articleTitle2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

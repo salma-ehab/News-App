@@ -1,9 +1,6 @@
 package com.example.newsappinkotlin.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.newsappinkotlin.model.NewsModel
 
 
@@ -15,5 +12,12 @@ interface NewsDao {
 
     @Query("SELECT * FROM news_table")
     fun getAllSavedNews():List<NewsModel>
+
+    @Query("SELECT COUNT(title) FROM news_table WHERE  title= :ti")
+    fun getCount(ti:String):Int
+
+    @Delete
+    fun delete(news: NewsModel)
+
 }
 
