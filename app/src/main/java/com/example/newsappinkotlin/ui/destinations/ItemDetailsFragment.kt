@@ -36,13 +36,6 @@ class ItemDetailsFragment() : Fragment() {
             .transform(CenterCrop())
             .into(imageView3)
 
-        var flag : Boolean= false
-        bookmark_icon.setOnClickListener {
-            flag=true
-            val Extra = Bundle()
-            Extra.putBoolean("FLAG",flag)
-
-        }
 
         readFull.setOnClickListener{
             findNavController().navigate(R.id.action_itemDetailsFragment_to_webFragment3) }

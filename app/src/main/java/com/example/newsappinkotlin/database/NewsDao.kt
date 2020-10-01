@@ -6,7 +6,6 @@ import com.example.newsappinkotlin.model.NewsModel
 
 @Dao
 interface NewsDao {
-
     @Insert(onConflict=OnConflictStrategy.REPLACE)
     fun insertNews(news:NewsModel)
 
