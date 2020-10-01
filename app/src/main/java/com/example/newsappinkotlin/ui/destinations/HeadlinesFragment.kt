@@ -61,7 +61,7 @@ class HeadlinesFragment : Fragment() {
     }
 
     fun onError() {
-        Toast.makeText(getActivity(), "Failed to get news", Toast.LENGTH_SHORT).show() }
+        Toast.makeText(getActivity(), "No Internet Connection", Toast.LENGTH_SHORT).show() }
 
     fun attachOnClickListener() {
         rv_news.addOnScrollListener(object : RecyclerView.OnScrollListener() {

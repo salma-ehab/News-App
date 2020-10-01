@@ -58,12 +58,12 @@
 
         <ImageView
             android:id="@+id/menuIcon"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/ic_saved"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="20dp"
             tools:ignore="VectorDrawableCompat"
             android:layout_marginRight="20dp" />
 

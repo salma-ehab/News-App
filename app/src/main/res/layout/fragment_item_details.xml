@@ -68,7 +68,7 @@
         android:text="Read Full Story"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="10dp"
         android:textColor="#FFFFFF"
         android:background="#3f413e" />
     <TextView
