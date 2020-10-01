@@ -1,5 +1,6 @@
+package com.example.newsappinkotlin.ui.destinations
+
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,11 +14,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.newsappinkotlin.R
 import com.example.newsappinkotlin.database.NewsDatabase
 import com.example.newsappinkotlin.model.NewsModel
-
-import com.example.newsappinkotlin.network.NewsClient
 import com.example.newsappinkotlin.ui.ViewModel.NewsViewModel
 import com.example.newsappinkotlin.ui.adapter.Adapter
 import kotlinx.android.synthetic.main.fragment_headlines.*
+
 
 class HeadlinesFragment : Fragment() {
     lateinit var vm: NewsViewModel
@@ -25,10 +25,14 @@ class HeadlinesFragment : Fragment() {
     var currentPage = 1
     lateinit var Adapter: Adapter
     lateinit var llm: LinearLayoutManager
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_headlines, container, false)
+    ): View? {
+        return inflater.inflate(R.layout.fragment_headlines, container, false)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -46,7 +50,6 @@ class HeadlinesFragment : Fragment() {
         rv_news.layoutManager = llm
         getPopularNews()
     }
-
     fun getPopularNews(){
         vm.fetchHeadlines(currentPage,::onError)
         vm.mutableNewsList.observe(viewLifecycleOwner, object : Observer<ArrayList<NewsModel>> {
