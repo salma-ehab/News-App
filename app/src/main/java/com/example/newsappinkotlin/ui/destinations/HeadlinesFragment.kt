@@ -21,7 +21,6 @@ import kotlinx.android.synthetic.main.fragment_headlines.*
 
 class HeadlinesFragment : Fragment() {
     lateinit var vm: NewsViewModel
-    lateinit var dbNews: NewsDatabase
     var currentPage = 1
     lateinit var Adapter: Adapter
     lateinit var llm: LinearLayoutManager
@@ -41,7 +40,6 @@ class HeadlinesFragment : Fragment() {
                 R.id.action_headlinesFragment_to_itemDetailsFragment)
         }
 
-        dbNews=NewsDatabase.getSavedItems(requireActivity().applicationContext)
         vm = ViewModelProvider(this).get(NewsViewModel::class.java)
         Adapter = Adapter(mutableListOf(),{ onClickCard()},requireActivity().applicationContext )
         llm = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
