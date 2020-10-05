@@ -1,4 +1,5 @@
 package com.example.newsappinkotlin.ui.destinations
+
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
@@ -15,18 +16,13 @@ class SplashFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_splash, container, false)
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // delays navigation to HeadlinesFragment by one second
         var handler: Handler = Handler()
         var runnable = Runnable {
-            findNavController().navigate(R.id.action_splashFragment_to_headlinesFragment)
-        }
+            findNavController().navigate(R.id.action_splashFragment_to_headlinesFragment) }
         handler.postDelayed(runnable,1000)
-
     }
-
-
-
 }

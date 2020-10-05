@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebViewClient
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.newsappinkotlin.R
 import com.example.newsappinkotlin.model.NewsModel
 import com.example.newsappinkotlin.ui.ViewModel.NewsViewModel
@@ -16,12 +18,19 @@ class WebFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_web, container, false) }
+    ): View? { return inflater.inflate(R.layout.fragment_web, container, false) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        var nModel: NewsModel = NewsViewModel.currentNews!!
+
+        lateinit var nModel:NewsModel
+
+        var fmodel:NewsViewModel = ViewModelProvider(requireActivity()).get(NewsViewModel::class.java)
+        // observes the changes in the NewsViewModel
+        fmodel.getSelectedNewsModel().observe(requireActivity(),
+            Observer<NewsModel> { t -> nModel=t!! })
+
         super.onViewCreated(view, savedInstanceState)
+        // retrieves the link of the webpage
         wb.settings.javaScriptEnabled = true
         wb.webViewClient = WebViewClient()
         wb.loadUrl(nModel.url.toString())

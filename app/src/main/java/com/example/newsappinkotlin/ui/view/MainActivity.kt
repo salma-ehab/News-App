@@ -12,8 +12,9 @@ import com.example.newsappinkotlin.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    lateinit var navController: NavController
 
+    lateinit var navController: NavController
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,16 +22,16 @@ class MainActivity : AppCompatActivity() {
 
         navController= Navigation.findNavController(this,R.id.nav_host_fragment_container)
         NavigationUI.setupWithNavController(bottom_nav_view,navController)
-        syncNavigationBar()
-    }
+        syncNavigationBar() }
+
+    // hides the navigation bar in some fragments
     private fun syncNavigationBar()
     {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if(destination.id==R.id.itemDetailsFragment || destination.id==R.id.splashFragment || destination.id==R.id.webFragment3 )
                 bottom_nav_view.visibility= View.GONE
             else
-                bottom_nav_view.visibility=View.VISIBLE
-        }
+                bottom_nav_view.visibility=View.VISIBLE }
     }
 
 }

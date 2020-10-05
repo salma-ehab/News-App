@@ -14,6 +14,7 @@ import com.example.newsappinkotlin.ui.adapter.Adapter
 import kotlinx.android.synthetic.main.fragment_saved_items.*
 
 class SavedItemsFragment : Fragment() {
+
     lateinit var dbNews: NewsDatabase
     lateinit var Adapter: Adapter
     lateinit var llm: LinearLayoutManager
@@ -25,17 +26,17 @@ class SavedItemsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        fun onClickCard() {
-            findNavController().navigate(
-                R.id.action_savedItemsFragment_to_itemDetailsFragment)
-        }
-
         dbNews = NewsDatabase.getSavedItems(requireActivity().applicationContext)
-        Adapter = Adapter(
-            dbNews.getNewsDao().getAllSavedNews() as MutableList<NewsModel>,{ onClickCard()},requireActivity().applicationContext )
+        // gets entity from database
+        Adapter = Adapter(dbNews.getNewsDao().getAllSavedNews() as MutableList<NewsModel>,{ onClickCard()} )
         llm = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
         rv_saved.adapter = Adapter
         rv_saved.layoutManager = llm
     }
+
+    // navigates to the ItemDetailsFragment
+    fun onClickCard() {
+        findNavController().navigate(R.id.action_savedItemsFragment_to_itemDetailsFragment) }
+
 }

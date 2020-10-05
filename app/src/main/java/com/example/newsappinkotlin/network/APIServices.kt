@@ -4,6 +4,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+// single end point to get top headlines in the USA
 interface APIServices {
     @GET("v2/top-headlines")
 

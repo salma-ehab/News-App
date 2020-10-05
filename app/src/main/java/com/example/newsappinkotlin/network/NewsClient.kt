@@ -1,13 +1,10 @@
 package com.example.newsappinkotlin.network
 
-import android.util.Log
-import com.example.newsappinkotlin.model.NewsModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+// build APIServices
 object NewsClient {
     val BASE_URL="https://newsapi.org/"
     val service: APIServices
